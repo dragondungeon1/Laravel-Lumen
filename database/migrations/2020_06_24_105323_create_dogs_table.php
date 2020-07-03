@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDogs1Table extends Migration
+class CreateDogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateDogs1Table extends Migration
      */
     public function up()
     {
-        Schema::create('_dogs1', function (Blueprint $table) {
+        Schema::create('dogs', function (Blueprint $table) {
             $table->id();
-            $table->foreign('_owners1_id')->references('id')->on('_owners1');
+            $table->unsignedBigInteger('owners_id');
+            $table->foreign('owners_id')->references('id')->on('owners');
             $table->timestamps();
             $table->string('name');
             $table->string('description');

@@ -11,14 +11,13 @@ class DogSeeder extends Seeder
      */
     public function run()
     {
-            DB::table('dog_table')->insert([
-           ['name'=> 'Harry',
-           ],
-            ['name'=>'Lola'
-                ],
-            ['name'=>'Gratje'
+        DB::table('dogs')->insert([
 
-            ]
+            ['name'=>'tess'],
+            ['name'=>'bram'],
+            ['name'=>'joop'],
+            ['name'=>'ruben']
+
         ]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOwners1Table extends Migration
+class CreateOwnersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateOwners1Table extends Migration
      */
     public function up()
     {
-        Schema::create('_owners1', function (Blueprint $table) {
-            $table->id()-> primary() ;
+        Schema::create('owners', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
             $table->string('email')->unique();
             $table->integer('phone');

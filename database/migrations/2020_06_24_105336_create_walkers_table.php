@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWalkers1Table extends Migration
+class CreateWalkersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateWalkers1Table extends Migration
      */
     public function up()
     {
-        Schema::create('_walkers1', function (Blueprint $table) {
+        Schema::create('walkers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('firstname');
