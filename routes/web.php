@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +14,8 @@
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
+});
+$router->get('/dogs', function() use($router) {
+    $dogs = DB::table('dogs')->get()->all();
+    return $dogs;
 });
