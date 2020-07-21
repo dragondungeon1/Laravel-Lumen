@@ -53,7 +53,6 @@ $router->put('dogs/{id}', function(Request $request, $id){
         $data['name'] = $request->input('name');
     }
 
-
     $dog = DB::table('dogs')
         ->where('id', $id)
         ->update($data);
