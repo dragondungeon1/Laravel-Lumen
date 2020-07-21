@@ -53,10 +53,11 @@ $router->put('dogs/{id}', function(Request $request, $id){
         $data['name'] = $request->input('name');
     }
 
+
     $dog = DB::table('dogs')
-        ->update($data)
-        ->where('id', $id)->post();
-    return response()->json($dog,200);
+        ->where('id', $id)
+        ->update($data);
+return response()->json($dog);
 });
 
 
