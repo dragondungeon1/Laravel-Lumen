@@ -3,7 +3,6 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-
 class DogSeeder extends Seeder
 {
     /**
@@ -23,8 +22,8 @@ class DogSeeder extends Seeder
                 'race'=>'Jack russel',
                 'age'=>'6',
                 'allergies'=>'none',
-                'owners_id'=> $owner->id,
-                'created_at'=>
+                'owner_id'=> $owner->id,
+                'created_at' => Carbon::now()
             ],
 
             [
@@ -34,7 +33,8 @@ class DogSeeder extends Seeder
                 'race'=>'Labradoodle',
                 'age'=>'4',
                 'allergies'=>'nuts',
-                'owners_id'=> $owner->id
+                'owner_id'=> $owner->id,
+                'created_at' => Carbon::now()
             ],
 
         ]);

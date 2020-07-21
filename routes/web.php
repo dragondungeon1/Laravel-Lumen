@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -15,7 +15,51 @@ use Illuminate\Support\Facades\DB;
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
-$router->get('/dogs', function() use($router) {
+//retrieving data
+$router->get('/dogs', function(){
     $dogs = DB::table('dogs')->get()->all();
-    return $dogs;
+    return response()->json($dogs);
 });
+//insert
+$router->post('/dogs', function(Request $request){
+    $dog = DB::table('dogs')->insert([
+
+        'name' => $request->input('name'),
+        'owner_id'=>$request->input('owner_id'),
+        'description'=>$request->input('description'),
+        'owner'=>$request->input('owner'),
+        'age'=>$request->input('age'),
+        'race'=>$request->input('race'),
+        'allergies'=>$request->input('allergies'),
+        'created_at'=>$request->input('created_at')
+
+    ]);
+    return response()->json($dog);
+});
+
+//retrieving data
+$router->get('/dogs/{id}', function($id){
+    $dog = DB::table('dogs')->where('id' ,$id)->get()->first();
+    return response()->json($dog);
+});
+
+//update data
+
+//doe overal een if statement
+// whatsapp gesprek tycho.
+$router->put('dogs/{id}', function(Request $request, $id){
+    $data=[];
+    if ($request->has('name')){
+        $data['name'] = $request->input('name');
+    }
+
+    $dog = DB::table('dogs')
+        ->update($data)
+        ->where('id', $id)->post();
+    return response()->json($dog,200);
+});
+
+
+
+
+

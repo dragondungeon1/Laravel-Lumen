@@ -15,8 +15,8 @@ class CreateDogsTable extends Migration
     {
         Schema::create('dogs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('owners_id');
-            $table->foreign('owners_id')->references('id')->on('owners');
+            $table->unsignedBigInteger('owner_id');
+            $table->foreign('owner_id')->references('id')->on('owners');
             $table->timestamps();
             $table->string('name');
             $table->string('description');
