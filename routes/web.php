@@ -54,7 +54,7 @@ $router->put('dogs/{id}', function(Request $request, $id){
     }
 
     $dog = DB::table('dogs')
-        ->where('id', $request->route()->parameter('id'))
+        ->where('id', $request->route()->parameter($id))
         ->update(['name' => $request->input('name')]);
 return response()->json($dog);
 });
