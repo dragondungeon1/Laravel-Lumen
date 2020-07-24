@@ -38,19 +38,27 @@ $router->post('/dogs', function(Request $request){
 });
 
 //delete data
-$router->delete('/dogs', function (Request $request){
+//$router->delete('/dogs', function (Request $request){
+//    $dog = DB::table('dogs')->delete([
+//        'name'=>$request->input('name'),
+//        'owner_id'=>$request->input('owner_id'),
+//        'description'=>$request->input('description'),
+//        'owner'=>$request->input('owner'),
+//        'age'=>$request->input('age'),
+//        'race'=>$request->input('race'),
+//        'allergies'=>$request->input('allergies'),
+//        'created_at'=>$request->input('created_at')
+//    ]);
+//    return response()->json($dog);
+//});
+
+
+$router->delete('/dogs',function ($dog){
     $dog = DB::table('dogs')->delete([
-        'name'=>$request->input('name'),
-        'owner_id'=>$request->input('owner_id'),
-        'description'=>$request->input('description'),
-        'owner'=>$request->input('owner'),
-        'age'=>$request->input('age'),
-        'race'=>$request->input('race'),
-        'allergies'=>$request->input('allergies'),
-        'created_at'=>$request->input('created_at')
-    ]);
-    return response()->json($dog);
-});
+        'name'=> $dog->input(),
+    ])
+})
+
 
 //retrieving data
 $router->get('/dogs/{id}', function($id){
