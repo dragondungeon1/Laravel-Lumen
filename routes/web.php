@@ -53,11 +53,10 @@ $router->post('/dogs', function(Request $request){
 //});
 
 
-$router->delete('/dogs',function ($dog){
-    $dog = DB::table('dogs')->delete([
-        'name'=> $dog->input(),
-    ])
-})
+$router->delete('/dogs{id}',function($name){
+    DB::table('dogs')->where('name',$name)->delete();
+    return response()->json($name);
+});
 
 
 //retrieving data
@@ -71,7 +70,7 @@ $router->get('/dogs/{id}', function($id){
 //doe overal een if statement
 // whatsapp gesprek tycho.
 $router->put('/dogs/{id}', function(Request $request, $id){
-    $data=[$id, 'name'];
+    $data=[];
     if ($request->has('name')){
         $data['name'] = $request->input('name');
     }
